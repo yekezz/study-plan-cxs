@@ -1,8 +1,9 @@
 {
   "name": "studyplancxs",
-  "displayName": "study_plan_cxs",
-  "description": "study_plan_cxs",
+  "displayName": "Study Plan",
+  "description": "催学社提交每日计划",
   "version": "0.0.1",
+  "publisher": "Enoch",
   "repository": "https://github.com/Enoch-q/study-plan-cxs",
   "engines": {
     "vscode": "^1.63.0"
@@ -18,7 +19,7 @@
     "commands": [
       {
         "command": "studyplancxs.studyplancxs",
-        "title": "Study Plan"
+        "title": "study plan"
       }
     ]
   },
