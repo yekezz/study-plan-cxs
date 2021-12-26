@@ -3,7 +3,7 @@
   "displayName": "study_plan_cxs",
   "description": "study_plan_cxs",
   "version": "0.0.1",
-  "repository": "",
+  "repository": "https://github.com/Enoch-q/study-plan-cxs",
   "engines": {
     "vscode": "^1.63.0"
   },
