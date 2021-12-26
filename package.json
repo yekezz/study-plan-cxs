@@ -2,15 +2,19 @@
   "name": "studyplancxs",
   "displayName": "Study Plan",
   "description": "催学社提交每日计划",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "Enoch",
-  "repository": "https://github.com/Enoch-q/study-plan-cxs",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Enoch-q/study-plan-cxs"
+  },
   "engines": {
     "vscode": "^1.63.0"
   },
   "categories": [
     "Other"
   ],
+  "icon": "images/icon.png",
   "activationEvents": [
     "onCommand:studyplancxs.studyplancxs"
   ],
