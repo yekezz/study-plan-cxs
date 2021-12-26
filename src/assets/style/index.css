@@ -1,0 +1,128 @@
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+}
+
+@media (max-width: 767px) {
+  .markdown-body {
+    padding: 15px;
+  }
+}
+
+#editor {
+  display: flex;
+  width: 80%;
+  margin: 0 auto;
+}
+
+#md-area {
+  flex: 1;
+  outline: none;
+  height: 350px;
+  overflow: scroll;
+  box-sizing: border-box;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+#view-area {
+  flex: 1;
+  box-sizing: border-box;
+  height: 350px;
+  overflow: scroll;
+  box-sizing: border-box;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.title {
+  display: flex;
+  width: 80%;
+  margin: 20px auto 0 auto;
+}
+
+.title span {
+  flex: 1;
+  height: 40px;
+  text-align: center;
+}
+
+.btn-group {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px auto;
+  width: 80%;
+}
+
+.col_49 {
+  color: #409EFF;
+}
+
+.btn {
+  outline: none;
+  background-color: #409EFF;
+  min-width: 60px;
+  height: 30px;
+  border: none;
+  border-radius: 5px;
+  margin-left: 20px;
+  padding: 0 10px;
+  color: #fff;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+#log {
+  color: red;
+  width: 80%;
+  margin: 20px auto;
+  text-align: right;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.git {
+  width: 80%;
+  margin: 20px auto;
+  text-align: right;
+}
+
+.tip {
+  margin-left: 10%;
+}
+
+.input {
+  outline: none !important;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  width: 200px;
+}
+
+.ps {
+  width: 80%;
+  margin: 0px auto 20px auto;
+  text-align: right;
+}
+
+.tip_text {
+  color: #999;
+  font-size: 16px;
+}
+
+.disabled {
+  background-color: #ccc;
+}
+
+ul {
+  list-style: none;
+}
+
+.display_none {
+  display: none;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>auto issues</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./modules/github-markdown.css">
+  <link rel="stylesheet" href="./style/index.css">
+</head>
+
+<body>
+  <div class="title">
+    <span>输入</span>
+    <span>预览</span>
+  </div>
+  <div id="editor">
+    <textarea name="" id="md-area" oninput="submitBtnStyle()" onkeyup="mdConverter()"></textarea>
+    <article id="view-area" class="markdown-body"></article>
+  </div>
+  <div class="git">
+    <span id="tokenstatus" class="tip_text">未配置（配置方法见下方提示）</span>
+    <input class="input" id="git_token" oninput="tokenInput()" type="password" placeholder="请配置github token">
+    <button class="btn" id="token_btn" onclick="updateToken()">更新token</button>
+  </div>
+  <div class="git">
+    <span id="issue_title"></span>
+    <input class="input" id="issue_number" oninput="issuesInput()" type="text" placeholder="请配置issue_number">
+    <button class="btn" id="issues_btn" onclick="updateIssuesParams()">手动更新issues参数</button>
+  </div>
+  <div class="btn-group">
+    <button class="btn" onclick="insert()">插入模板</button>
+    <button class="btn" onclick="insertPre()">插入上次提交内容</button>
+    <button class="btn" id="submit_btn" onclick="submit()">提交</button>
+  </div>
+  <p class="tip">
+    提示：<br />
+    1、不<a target="_blank" href="https://github.com/settings/tokens">配置token</a>提交会提示授权失败； <br />
+    2、<a href="https://github.com/settings/tokens">配置token</a>的时候，权限需要勾选，不然也会提交失败； <br />
+
+  </p>
+  <ul id="log">
+  </ul>
+  <script src="./modules/marked.min.js"></script>
+  <script src="./js/utils.js"></script>
+  <script src="./js/style.js"></script>
+  <script src="./js/init.js"></script>
+  <script src="./js/event.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>
