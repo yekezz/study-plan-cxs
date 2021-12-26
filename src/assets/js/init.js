@@ -7,7 +7,6 @@ let git_token = document.querySelector('#git_token');
 let issue_title = document.querySelector('#issue_title');
 let issue_number = document.querySelector('#issue_number');
 let tokenstatus = document.querySelector('#tokenstatus');
-let issues_btn = document.querySelector('#issues_btn');
 let token_btn = document.querySelector('#token_btn');
 let submit_btn = document.querySelector('#submit_btn');
 

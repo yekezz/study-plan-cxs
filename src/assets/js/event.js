@@ -10,7 +10,6 @@ function tokenInput() {
  * issue参数输入框
  */
 function issuesInput() {
-  issuesBtnStyle();
   submitBtnStyle();
 }
 
@@ -33,16 +32,6 @@ function updateToken() {
     command: 'initOct'
   });
   tokenstatus.innerHTML = '已配置';
-}
-
-/**
- * issue参数更新
- * @returns 
- */
-function updateIssuesParams() {
-  if (issues_btn.classList.contains('disabled')) {
-    return;
-  }
 }
 
 /**
@@ -139,8 +128,6 @@ function messageHandle(event) {
 function issueNumberHandle(message) {
   issue_number.value = message.content.number;
   issue_title.innerText = `今日issue：${message.content.title}`;
-  issues_btn.classList.add('disabled');
-  issues_btn.classList.add('display_none');
   issue_number.classList.add("display_none");
 }
 

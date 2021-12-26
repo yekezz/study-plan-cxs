@@ -5,9 +5,9 @@ const { Octokit } = require("@octokit/core");
 
 
 export function getWebViewContent(context: any, templatePath: string) {
-  const resourcePath = getExtensionFileAbsolutePath(context, templatePath);
-  const dirPath = path.dirname(resourcePath);
-  let html = fs.readFileSync(resourcePath, 'utf-8');
+  // const resourcePath = getExtensionFileAbsolutePath(context, templatePath);
+  const dirPath = path.dirname(templatePath);
+  let html = fs.readFileSync(templatePath, 'utf-8');
   html = html.replace(/(<link.+?href="|<script.+?src="|<img.+?src=")(.+?)"/g, (m: any, $1: any, $2: any) => {
     return $1 + vscode.Uri.file(path.resolve(dirPath, $2)).with({
       scheme: 'vscode-resource'
