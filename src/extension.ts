@@ -2,12 +2,14 @@
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-import { createCourseWebview } from './service';
+import WebView from './services/webView';
 
 export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand('studyplancxs.studyplancxs', function () {
-		//创建webview
-		createCourseWebview(context);
+		// WebView初始化
+		let webview = new WebView(context);
+		// 创建webview
+		webview.createCourseWebview();
 	}));
 }
 

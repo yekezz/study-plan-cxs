@@ -20,28 +20,33 @@
     <textarea name="" id="md-area" oninput="submitBtnStyle()" onkeyup="mdConverter()"></textarea>
     <article id="view-area" class="markdown-body"></article>
   </div>
-  <div class="git">
-    <span id="tokenstatus" class="tip_text">未配置（配置方法见下方提示）</span>
-    <input class="input" id="git_token" oninput="tokenInput()" type="password" placeholder="请配置github token">
-    <button class="btn" id="token_btn" onclick="updateToken()">更新token</button>
+  <div class="main">
+    <ul class="left" id="log">
+      <li>日志：</li>
+    </ul>
+    <div class="right">
+      <div class="git">
+        <span id="tokenstatus" class="tip_text">未配置（配置方法见下方提示）</span>
+        <input class="input" id="git_token" oninput="tokenInput()" type="password" placeholder="请配置github token">
+        <button class="btn" id="token_btn" onclick="updateToken()">更新token</button>
+      </div>
+      <div class="git">
+        <span id="issue_title"></span>
+        <input class="input" id="issue_number" oninput="issuesInput()" type="text" placeholder="请配置issue_number">
+      </div>
+      <div class="btn-group">
+        <button class="btn" onclick="insert()">插入模板</button>
+        <button class="btn" onclick="insertPre()">插入上次提交内容</button>
+        <button class="btn" id="submit_btn" onclick="submit()">提交</button>
+      </div>
+      <p class="tip">
+        提示：<br />
+        1、不<a target="_blank" href="https://github.com/settings/tokens">配置token</a>提交会提示授权失败； <br />
+        2、<a href="https://github.com/settings/tokens">配置token</a>的时候，权限需要勾选，不然也会提交失败； <br />
+        3、token会失效！token会失效！获取issue列表或者提交失败（Bad credentials），可能是token失效！ <br />
+      </p>
+    </div>
   </div>
-  <div class="git">
-    <span id="issue_title"></span>
-    <input class="input" id="issue_number" oninput="issuesInput()" type="text" placeholder="请配置issue_number">
-  </div>
-  <div class="btn-group">
-    <button class="btn" onclick="insert()">插入模板</button>
-    <button class="btn" onclick="insertPre()">插入上次提交内容</button>
-    <button class="btn" id="submit_btn" onclick="submit()">提交</button>
-  </div>
-  <p class="tip">
-    提示：<br />
-    1、不<a target="_blank" href="https://github.com/settings/tokens">配置token</a>提交会提示授权失败； <br />
-    2、<a href="https://github.com/settings/tokens">配置token</a>的时候，权限需要勾选，不然也会提交失败； <br />
-
-  </p>
-  <ul id="log">
-  </ul>
   <script src="./modules/marked.min.js"></script>
   <script src="./js/utils.js"></script>
   <script src="./js/style.js"></script>

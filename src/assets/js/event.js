@@ -75,7 +75,6 @@ function submit() {
       value: mdArea.value
     }
   });
-  createLog(`信息(${formatDate(new Date)})：提交中...`);
   vscode.postMessage({
     command: 'submit',
     content: {
@@ -99,19 +98,19 @@ function mdConverter() {
  */
 function messageHandle(event) {
   const message = event.data;
-  console.log(message);
+  console.log(message, 1111111111111111);
   switch (message.command) {
     case 'today_issue_number_webview':
       issueNumberHandle(message);
       break;
-    case 'err_webview':
-      createLog(`错误(${formatDate(new Date)})：${message.content}！`);
+    case 'info_webview':
+      createLog(`${message.content.text}！`, message.content.type || null);
       break;
     case 'success_webview':
       mdArea.innerHTML = '';
       mdConverter();
       submitBtnStyle();
-      createLog(`信息(${formatDate(new Date)})：${message.content}！`, false);
+      createLog(`${message.content}！`, 'success');
       break;
     case 'getStorage_webview':
       getStorageHandle(message.type, message.content);
@@ -137,6 +136,7 @@ function issueNumberHandle(message) {
  * @param {*} content 
  */
 function getStorageHandle(type, content) {
+  console.log(type, content,22222222222)
   switch (type) {
     case 'pre_study_plan':
       try {
@@ -144,7 +144,7 @@ function getStorageHandle(type, content) {
         mdConverter();
         submitBtnStyle();
       } catch (error) {
-        createLog(`错误(${formatDate(new Date)})：插入失败，请重试或者选择其他操作！`);
+        createLog(`插入失败，请重试或者选择其他操作！`);
       }
       break;
     case 'git_token_study_plan':
@@ -154,7 +154,7 @@ function getStorageHandle(type, content) {
         console.log(token, git_token.value)
         tokenstatus.innerHTML = token ? '已配置' : '未配置（配置方法见下方提示）';
       } catch (error) {
-        createLog(`错误(${formatDate(new Date)})：获取本地存储token参数失败，请重新填写！`);
+        createLog(`获取本地存储token参数失败，请重新填写！`);
       }
       tokenBtnStyle();
       break;
