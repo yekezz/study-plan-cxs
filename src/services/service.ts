@@ -6,6 +6,7 @@ import { SubmitContent } from '../interface/index';
 import { OWNER, REPO, GET_ISSUES_URL, POST_COMMENT_URL } from '../common/constants';
 import Vaildate from './vaildate';
 let cansubmit: boolean = true;
+let canGetIssue: boolean = true;
 
 /**
  * 获取issues列表
@@ -15,6 +16,10 @@ let cansubmit: boolean = true;
  * @returns 
  */
 export async function getIssuesList(octokit: any, context: vscode.ExtensionContext, postMes: Function) {
+  if(!canGetIssue) {
+    return;
+  }
+  canGetIssue = false;
   postMes('info_webview', { text: '获取issues列表中....', type: 'info' });
   let storage: string | undefined = context.globalState.get('git_token_study_plan');
   if (!storage) {
@@ -29,7 +34,9 @@ export async function getIssuesList(octokit: any, context: vscode.ExtensionConte
     issuesListHandle(res.status, res.data, postMes);
   } catch (error: any) {
     postMes('info_webview', { text: `${error.message}，获取issues列表失败，请手动配置issues_number`, type: 'err' });
+    postMes('get_issue_fail_webview', '获取issues列表失败，请稍后重试');
   }
+  canGetIssue = true;
 }
 
 /**
@@ -45,19 +52,22 @@ function issuesListHandle(status: number, data: any[], postMes: Function): void 
     {
       rule: status === 200,
       handle: () => {
-        postMes('info_webview', { text: `获取issues列表失败，请手动配置issues_number`, type: 'err' });
+        postMes('info_webview', { text: `获取issues列表失败，请稍后重试`, type: 'err' });
+        postMes('get_issue_fail_webview', '获取issues列表失败，请稍后重试');
       }
     },
     {
       rule: !!(data && data.length),
       handle: () => {
-        postMes('info_webview', { text: `还未发布最新issues，请稍后重试`, type: 'info' });
+        postMes('info_webview', { text: `还未发布最新issues，请发布后提交`, type: 'info' });
+        postMes('get_issue_fail_webview', '获取issues列表失败，请稍后重试');
       }
     },
     {
       rule: data[0].title.split('【每日计划】 ')[1] === todayDate(),
       handle: () => {
-        postMes('info_webview', { text: `今日还未发布最新issues，请稍后重试`, type: 'info' });
+        postMes('info_webview', { text: `今日还未发布最新issues，请发布后提交`, type: 'info' });
+        postMes('get_issue_fail_webview', '今日还未发布最新issues，请发布后提交');
       }
     }
   ]);

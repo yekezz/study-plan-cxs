@@ -98,8 +98,11 @@ function mdConverter() {
  */
 function messageHandle(event) {
   const message = event.data;
-  console.log(message, 1111111111111111);
   switch (message.command) {
+    case 'get_issue_fail_webview':
+      issue_title.innerHTML = message.content;
+      issue_btn.classList.remove('display_none');
+      break;
     case 'today_issue_number_webview':
       issueNumberHandle(message);
       break;
@@ -127,7 +130,7 @@ function messageHandle(event) {
 function issueNumberHandle(message) {
   issue_number.value = message.content.number;
   issue_title.innerText = `今日issue：${message.content.title}`;
-  issue_number.classList.add("display_none");
+  issue_btn.classList.add('display_none');
 }
 
 /**
@@ -136,7 +139,6 @@ function issueNumberHandle(message) {
  * @param {*} content 
  */
 function getStorageHandle(type, content) {
-  console.log(type, content,22222222222)
   switch (type) {
     case 'pre_study_plan':
       try {
@@ -151,7 +153,6 @@ function getStorageHandle(type, content) {
       try {
         let token = content;
         git_token.value = token || '';
-        console.log(token, git_token.value)
         tokenstatus.innerHTML = token ? '已配置' : '未配置（配置方法见下方提示）';
       } catch (error) {
         createLog(`获取本地存储token参数失败，请重新填写！`);

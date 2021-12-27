@@ -49,7 +49,6 @@ export function storageHandle(context: vscode.ExtensionContext) {
       context.globalState.update(key, value);
     },
     get: function (key: string) {
-      console.log(context.globalState.get(key), 9999999999999);
       return context.globalState.get(key);
     }
   };

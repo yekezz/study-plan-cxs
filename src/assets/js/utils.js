@@ -8,7 +8,6 @@ function formatDate(str) {
  * @param {*} err 
  */
 function createLog(content, type = 'err') {
-  console.log(content, type, 99999999999);
   let li = document.createElement('li');
   li.innerText = tipType(content)[type] || '';
   colorType[type] && li.classList.add(colorType[type]);

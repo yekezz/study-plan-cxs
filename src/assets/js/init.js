@@ -9,6 +9,7 @@ let issue_number = document.querySelector('#issue_number');
 let tokenstatus = document.querySelector('#tokenstatus');
 let token_btn = document.querySelector('#token_btn');
 let submit_btn = document.querySelector('#submit_btn');
+let issue_btn = document.querySelector('#issue_btn');
 
 
 
@@ -34,6 +35,8 @@ function getInitState() {
  * 获取issues列表，获取今日最新的issue
  */
 function getIssuesList(number) {
+  issue_title.innerText = `获取今日issue中...`;
+  issue_btn.classList.add('display_none');
   vscode.postMessage({
     command: 'getIssuesList',
     content: {
